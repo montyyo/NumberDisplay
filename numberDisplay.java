@@ -6,6 +6,7 @@ public class numberDisplay
     // limite del display
     private int limit;
     
+    //introduce el limite
     public numberDisplay(int newLimit)
     {
       display = 0;
@@ -22,7 +23,14 @@ public class numberDisplay
     //metodo que imprime el valor actual del display
     public void getDisplayValue()
     {
-        System.out.println("valor del display  = " + display);
+        if (display < 10 )
+        {
+            System.out.println("0" + display);
+        }
+        else
+        {
+             System.out.println(display);
+        }
     }
     
     // metodo que devuelve el valor de display como un entero
