@@ -24,5 +24,10 @@ public class numberDisplay
         System.out.println("valor del display  = " + display);
     }
     
-    // 
+    // metodo que devuelve el valor de display como un entero
+    public void getValue()
+    {
+        int displayValue = display;
+        System.out.println(displayValue);
+    }
 }
