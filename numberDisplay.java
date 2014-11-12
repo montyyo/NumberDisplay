@@ -18,7 +18,11 @@ public class numberDisplay
       display = newDisplay;
     }
     
+    //metodo que imprime el valor actual del display
+    public void getDisplayValue()
+    {
+        System.out.println("valor del display  = " + display);
+    }
     
-    
-
+    // 
 }
