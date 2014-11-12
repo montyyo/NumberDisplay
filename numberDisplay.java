@@ -5,6 +5,7 @@ public class numberDisplay
     private int display;
     // limite del display
     private int limit;
+    
     public numberDisplay(int newLimit)
     {
       display = 0;
@@ -29,5 +30,17 @@ public class numberDisplay
     {
         int displayValue = display;
         System.out.println(displayValue);
+    }
+    
+    //metodo que incrementa en 1 el display y si alcanza el limite vuelve al principio
+    public void incremet()
+    {
+      display = display + 1;
+      if (display >= limit )
+      {
+ 
+         display = 0;
+      }
+      
     }
 }
