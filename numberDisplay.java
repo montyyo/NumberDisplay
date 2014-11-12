@@ -34,17 +34,16 @@ public class numberDisplay
     }
     
     // metodo que devuelve el valor de display como un entero
-    public void getValue()
+    public int getValue()
     {
-        int displayValue = display;
-        System.out.println(displayValue);
+       return  display;
     }
     
     //metodo que incrementa en 1 el display y si alcanza el limite vuelve al principio
     public void incremet()
     {
       display = display + 1;
-      if (display >= limit )
+      if (display == limit )
       {
  
          display = 0;
