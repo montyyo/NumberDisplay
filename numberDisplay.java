@@ -10,6 +10,7 @@ public class numberDisplay
     public numberDisplay(int newLimit)
     {
       display = 0;
+      
       limit = newLimit;
     
     }
@@ -17,7 +18,9 @@ public class numberDisplay
     //metodo para cambiar el valor del display
     public void setValue(int newDisplay)
     {
+      if (newDisplay < limit && newDisplay >=0){
       display = newDisplay;
+    }
     }
     
     //metodo que imprime el valor actual del display
@@ -40,14 +43,31 @@ public class numberDisplay
     }
     
     //metodo que incrementa en 1 el display y si alcanza el limite vuelve al principio
+    //if (value < (limit - 1)){ value = value +1} else {value = 0;} si sumas dentro llega al limite , este no
     public void incremet()
     {
       display = display + 1;
       if (display == limit )
       {
- 
-         display = 0;
+          display = 0;
       }
       
+    }
+    
+    //otro tipo de string
+    public String getDisplayValueTwo()
+    {
+       String returnedValue="";
+         if (display < 10)
+         {
+            returnedValue = "0" + display;
+            }
+         else
+         {
+            returnedValue = "" + display;
+            }
+    
+       return returnedValue;
+    
     }
 }
