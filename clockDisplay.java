@@ -19,12 +19,28 @@ public class clockDisplay
      */
     public clockDisplay()
     {
-        hours = 00;
-        minutes = 00;
+        saveHour = "00:00";
     }
     
     /**
      * create a new constructor with parameters 
      */
+    public clockDisplay(int newHours, int newMinutes)
+    {
+        hours = newHours;
+        minutes = newMinutes;
+        if (hours < 10 && minutes > 10 )
+        {
+            saveHour = "0" + hours + ":" + minutes;
+        }
+        
+        if (minutes <10 && hours > 10)
+        {
+            saveHour = hours + ":0" + minutes;
+        }
+    }
+    
+    
+    
     
 }
