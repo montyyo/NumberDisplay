@@ -8,9 +8,9 @@
 public class clockDisplay
 {
      // atribute for hours
-    private int hours;
+    private NumberDisplay hours;
     // limite del display
-    private int minutes;
+    private NumberDisplay minutes;
     //save the actualy hour
     private String saveHour;
     
@@ -19,7 +19,8 @@ public class clockDisplay
      */
     public clockDisplay()
     {
-        saveHour = "00:00";
+        hours = new NumberDisplay(0);
+        minutes = new NumberDisplay(0);
     }
     
     /**
@@ -27,20 +28,28 @@ public class clockDisplay
      */
     public clockDisplay(int newHours, int newMinutes)
     {
-        hours = newHours;
-        minutes = newMinutes;
-        if (hours < 10 && minutes > 10 )
-        {
-            saveHour = "0" + hours + ":" + minutes;
-        }
+        hours = new NumberDisplay(24);
+        minutes = new NumberDisplay(60);
+        saveHour = hours + ":" + minutes;
+    }
+    
+    /**
+     * methot setTime, acept 2 parameters int hours and minutes.
+     */
+    public void setTime(int setHour, int setMinute)
+    {
+        hours = setHour;
+        minutes = setMinute;
         
-        if (minutes <10 && hours > 10)
-        {
-            saveHour = hours + ":0" + minutes;
-        }
+    }
+    
+    /**
+     * method string getTime, return actually hour
+     */
+    public String getTime()
+    {
+       
     }
     
     
-    
-    
-}
+ }

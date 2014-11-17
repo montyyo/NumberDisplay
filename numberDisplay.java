@@ -1,5 +1,5 @@
 
-public class numberDisplay
+public class NumberDisplay
 {
     // variable numerica para el display
     private int display;
@@ -7,7 +7,7 @@ public class numberDisplay
     private int limit;
     
     //introduce el limite
-    public numberDisplay(int newLimit)
+    public NumberDisplay(int newLimit)
     {
       display = 0;
       
