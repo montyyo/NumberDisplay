@@ -37,13 +37,13 @@ public class clockDisplay
     }
     
     /**
-     * methot setTime, acept 2 parameters int hours and minutes.
+     * methot setTime, acept 2 parameters int hours and minutes and change time.
      */
     public void setTime(int setHour, int setMinute)
     {
        hours.setValue(setHour);
        minutes.setValue(setMinute);
-       saveHour();       
+       saveHour = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo();       
     }
     
     /**
