@@ -19,8 +19,9 @@ public class clockDisplay
      */
     public clockDisplay()
     {
-        hours = new NumberDisplay(0);
-        minutes = new NumberDisplay(0);
+        hours = new NumberDisplay(24);//creacion en memoria de objetos
+        minutes = new NumberDisplay(60);
+         saveHour = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo(); //llamada al metodo de numberdisplay
     }
     
     /**
@@ -28,9 +29,11 @@ public class clockDisplay
      */
     public clockDisplay(int newHours, int newMinutes)
     {
-        hours = new NumberDisplay(24);
-        minutes = new NumberDisplay(60);
-        saveHour = hours + ":" + minutes;
+       hours = new NumberDisplay(24);//creacion en memoria de objetos
+       minutes = new NumberDisplay(60);
+       hours.setValue(newHours); //cambio de valores 
+       minutes.setValue(newMinutes);
+       saveHour = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo();
     }
     
     /**
@@ -38,18 +41,18 @@ public class clockDisplay
      */
     public void setTime(int setHour, int setMinute)
     {
-        hours = setHour;
-        minutes = setMinute;
-        
+       hours.setValue(setHour);
+       minutes.setValue(setMinute);
+       saveHour();       
     }
     
     /**
      * method string getTime, return actually hour
      */
-    public String getTime()
-    {
-       
-    }
+   public String getTime()
+   {
+       return saveHour;
+   }
     
     
  }
