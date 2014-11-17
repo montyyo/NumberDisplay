@@ -54,5 +54,13 @@ public class clockDisplay
        return saveHour;
    }
     
+    /**
+     * method timeTick plus a minute
+     */
+    public void timeTrick()
     
+    {
+    
+    
+    }
  }
