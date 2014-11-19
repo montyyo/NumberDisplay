@@ -78,7 +78,7 @@ public class clockDisplay
     {
          if ( hours.getValue() >= 12){
              int hora = hours.getValue() - 12;
-             saveHour = hora + ":" + minutes.getDisplayValueTwo()+ "pm"; //updateDisplay();
+             saveHour = "0" + hora + ":" + minutes.getDisplayValueTwo()+ "pm"; //updateDisplay();
             }
          else{
              saveHour = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo() + "am"; //updateDisplay();
