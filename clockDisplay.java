@@ -8,7 +8,7 @@
 public class clockDisplay
 {
      // atribute for hours
-    private NumberDisplay hours;
+    private NumberDisplay hours; //tipo NumberDisplay
     // limite del display
     private NumberDisplay minutes;
     //save the actualy hour
@@ -19,9 +19,9 @@ public class clockDisplay
      */
     public clockDisplay()
     {
-        hours = new NumberDisplay(24);//creacion en memoria de objetos
-        minutes = new NumberDisplay(60);
-         saveHour = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo(); //llamada al metodo de numberdisplay
+        hours = new NumberDisplay(24);//creacion en memoria de objetos con limite 24h
+        minutes = new NumberDisplay(60);//creacion en memoria de objeto con limite 60m
+        updateDisplay(); //llamada al metodo de numberdisplay
     }
     
     /**
@@ -31,9 +31,9 @@ public class clockDisplay
     {
        hours = new NumberDisplay(24);//creacion en memoria de objetos
        minutes = new NumberDisplay(60);
-       hours.setValue(newHours); //cambio de valores 
+       hours.setValue(newHours); //cambio de valores del objeto, invocando el metodo setValue de la clase NumberDisplay 
        minutes.setValue(newMinutes);
-       saveHour = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo();
+       updateDisplay();
     }
     
     /**
@@ -43,7 +43,7 @@ public class clockDisplay
     {
        hours.setValue(setHour);
        minutes.setValue(setMinute);
-       saveHour = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo();       
+     updateDisplay();    
     }
     
     /**
@@ -51,6 +51,7 @@ public class clockDisplay
      */
    public String getTime()
    {
+      
        return saveHour;
    }
     
@@ -60,7 +61,31 @@ public class clockDisplay
     public void timeTrick()
     
     {
+       
+        minutes.incremet();//incrementamos los minutos y su al cambiar llega al limite y pasa a 0 sumamos una hora.
+        if(minutes.getValue() == 0) { 
+            hours.incremet();
+        }
+       updateDisplay();
+       //podemos llamar a updateDisplay();
+    }
     
-    
+    /**
+     * update string saveHour. method private solo puede usarse en el codigo desde otro metodo de la misma clase no desde
+     * otra.
+     */
+    private void updateDisplay() //evitamos el uso redundante de codigo-- podemos sustituir saveHour por 
+    {
+         if ( hours.getValue() >= 12){
+             int hora = hours.getValue() - 12;
+             saveHour = hora + ":" + minutes.getDisplayValueTwo()+ "pm"; //updateDisplay();
+            }
+         else{
+             saveHour = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo() + "am"; //updateDisplay();
+            }
+             
+         
+        
+
     }
  }

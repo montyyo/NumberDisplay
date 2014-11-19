@@ -32,7 +32,7 @@ public class NumberDisplay
         }
         else
         {
-             System.out.println(display);
+             System.out.println("" + display);
         }
     }
     
