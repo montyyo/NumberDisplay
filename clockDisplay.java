@@ -13,7 +13,14 @@ public class clockDisplay
     private NumberDisplay minutes;
     //save the actualy hour
     private String saveHour;
-    
+    //save day
+    private NumberDisplay day;
+    //save month
+    private NumberDisplay month;
+    //save year
+    private NumberDisplay year;
+    //save date
+    private String saveDate;
     /**
      * create a new constructor.
      */
@@ -21,29 +28,43 @@ public class clockDisplay
     {
         hours = new NumberDisplay(24);//creacion en memoria de objetos con limite 24h
         minutes = new NumberDisplay(60);//creacion en memoria de objeto con limite 60m
+        day = new NumberDisplay(30);
+        month = new NumberDisplay(12);
+        year = new NumberDisplay(2015);
         updateDisplay(); //llamada al metodo de numberdisplay
     }
     
     /**
      * create a new constructor with parameters 
      */
-    public clockDisplay(int newHours, int newMinutes)
+    public clockDisplay(int newHours, int newMinutes, int newDay, int newMonth, int newYear)
     {
        hours = new NumberDisplay(24);//creacion en memoria de objetos
        minutes = new NumberDisplay(60);
+       day = new NumberDisplay(30);
+       month = new NumberDisplay(12);
+       year = new NumberDisplay(2015);
+       
        hours.setValue(newHours); //cambio de valores del objeto, invocando el metodo setValue de la clase NumberDisplay 
        minutes.setValue(newMinutes);
+       day.setValue(newDay);
+       month.setValue(newMonth);
+       year.setValue(newYear);
+       
        updateDisplay();
     }
     
     /**
      * methot setTime, acept 2 parameters int hours and minutes and change time.
      */
-    public void setTime(int setHour, int setMinute)
+    public void setTime(int setHour, int setMinute, int newDay, int newMonth, int newYear)
     {
        hours.setValue(setHour);
        minutes.setValue(setMinute);
-     updateDisplay();    
+       day.setValue(newDay);
+       month.setValue(newMonth);
+       year.setValue(newYear);
+       updateDisplay();    
     }
     
     /**
@@ -51,8 +72,9 @@ public class clockDisplay
      */
    public String getTime()
    {
-      
-       return saveHour;
+    
+       return  saveHour ;
+       
    }
     
     /**
@@ -76,13 +98,38 @@ public class clockDisplay
      */
     private void updateDisplay() //evitamos el uso redundante de codigo-- podemos sustituir saveHour por 
     {
-         if ( hours.getValue() >= 12){
-             int hora = hours.getValue() - 12;
-             saveHour = "0" + hora + ":" + minutes.getDisplayValueTwo()+ "pm"; //updateDisplay();
+        String saveDate = " " + day.getDisplayValueTwo()+ "/" + month.getDisplayValueTwo() + "/" + year.getDisplayValueTwo();
+         if(hours.getValue() < 12)
+       {
+       if (hours.getValue() == 0)
+       {
+           saveHour  = "12"+ ":" + minutes.getDisplayValueTwo() + " am" + saveDate; 
+        }
+        else
+        {
+            saveHour  = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo() + " am"+ saveDate; 
+        }
+    }
+    else
+    {
+        if (hours.getValue() == 12)
+        {
+            saveHour  = hours.getValue() + ":" + minutes.getDisplayValueTwo() + " pm"+ saveDate; 
+        }
+        else
+        {
+            if((hours.getValue()-12) <10 )
+            {
+                saveHour = "0" + (hours.getValue()-12) + ":" + minutes.getDisplayValueTwo() + " pm"+ saveDate; 
             }
-         else{
-             saveHour = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo() + "am"; //updateDisplay();
+            else
+            {
+                saveHour  = (hours.getValue()-12) + ":" + minutes.getDisplayValueTwo() + " pm"+ saveDate; 
             }
+        }
+}
+        
+        
              
          
         
