@@ -11,15 +11,15 @@ public class clockDisplay
     private NumberDisplay hours; //tipo NumberDisplay
     // limite del display
     private NumberDisplay minutes;
-    //save the actualy hour
+    // actualy hour
     private String saveHour;
-    //save day
+    // day
     private NumberDisplay day;
-    //save month
+    // month
     private NumberDisplay month;
-    //save year
+    // year
     private NumberDisplay year;
-    //save date
+    // date
     private String saveDate;
     /**
      * create a new constructor.
@@ -57,10 +57,20 @@ public class clockDisplay
     /**
      * methot setTime, acept 2 parameters int hours and minutes and change time.
      */
-    public void setTime(int setHour, int setMinute, int newDay, int newMonth, int newYear)
+    public void setTime(int setHour, int setMinute )
     {
        hours.setValue(setHour);
        minutes.setValue(setMinute);
+       
+       updateDisplay();    
+    }
+    
+    /**
+     * method setDate, acept the parameters int and change the Date
+     */
+     public void setDate(int newDay, int newMonth, int newYear)
+    {
+       
        day.setValue(newDay);
        month.setValue(newMonth);
        year.setValue(newYear);
@@ -77,6 +87,7 @@ public class clockDisplay
        
    }
     
+    
     /**
      * method timeTick plus a minute
      */
@@ -87,7 +98,10 @@ public class clockDisplay
         minutes.incremet();//incrementamos los minutos y su al cambiar llega al limite y pasa a 0 sumamos una hora.
         if(minutes.getValue() == 0) { 
             hours.incremet();
+            
         }
+        
+
        updateDisplay();
        //podemos llamar a updateDisplay();
     }
@@ -99,25 +113,25 @@ public class clockDisplay
     private void updateDisplay() //evitamos el uso redundante de codigo-- podemos sustituir saveHour por 
     {
         String saveDate = " " + day.getDisplayValueTwo()+ "/" + month.getDisplayValueTwo() + "/" + year.getDisplayValueTwo();
-         if(hours.getValue() < 12)
+       if(hours.getValue() < 12)
        {
        if (hours.getValue() == 0)
        {
            saveHour  = "12"+ ":" + minutes.getDisplayValueTwo() + " am" + saveDate; 
-        }
+       }
         else
-        {
+       {
             saveHour  = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo() + " am"+ saveDate; 
-        }
-    }
-    else
-    {
-        if (hours.getValue() == 12)
-        {
+       }
+       }
+       else
+       {
+         if (hours.getValue() == 12)
+         {
             saveHour  = hours.getValue() + ":" + minutes.getDisplayValueTwo() + " pm"+ saveDate; 
-        }
-        else
-        {
+         }
+         else
+         {
             if((hours.getValue()-12) <10 )
             {
                 saveHour = "0" + (hours.getValue()-12) + ":" + minutes.getDisplayValueTwo() + " pm"+ saveDate; 
