@@ -147,33 +147,35 @@ public class clockDisplay
     private void updateDisplay() //evitamos el uso redundante de codigo-- podemos sustituir saveHour por 
     {
       // variable local para excribir la fecha
-      String saveDate = " " + day.getDisplayValueTwo()+ "/" + month.getDisplayValueTwo() + "/" + year.getDisplayValueTwo();
+       saveDate = " " + day.getDisplayValueTwo()+ "/" + month.getDisplayValueTwo() + "/" + year.getDisplayValueTwo();
+       String pm = " pm";
+       String am = " am";
        if(hours.getValue() < 12)
        {
           if (hours.getValue() == 0)
           {
-               saveHour  = "12"+ ":" + minutes.getDisplayValueTwo() + " am" + saveDate; 
+               saveHour  = "12"+ ":" + minutes.getDisplayValueTwo() + am  + saveDate; 
           }
           else
           {
-            saveHour  = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo() + " am"+ saveDate; 
+            saveHour  = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo() + am + saveDate; 
           }
        }
        else
        {
          if (hours.getValue() == 12)
          {
-            saveHour  = hours.getValue() + ":" + minutes.getDisplayValueTwo() + " pm"+ saveDate; 
+            saveHour  = hours.getValue() + ":" + minutes.getDisplayValueTwo() + pm + saveDate; 
          }
          else
          {
             if((hours.getValue()-12) <10 )
             {
-                saveHour = "0" + (hours.getValue()-12) + ":" + minutes.getDisplayValueTwo() + " pm"+ saveDate; 
+                saveHour = "0" + (hours.getValue()-12) + ":" + minutes.getDisplayValueTwo() + pm + saveDate; 
             }
             else
             {
-                saveHour  = (hours.getValue()-12) + ":" + minutes.getDisplayValueTwo() + " pm"+ saveDate; 
+                saveHour  = (hours.getValue()-12) + ":" + minutes.getDisplayValueTwo() + pm + saveDate; 
             }
          }
        }
