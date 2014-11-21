@@ -30,7 +30,7 @@ public class clockDisplay
         minutes = new NumberDisplay(60);//creacion en memoria de objeto con limite 60m
         day = new NumberDisplay(30);
         month = new NumberDisplay(12);
-        year = new NumberDisplay(2015);
+        year = new NumberDisplay(99);
         updateDisplay(); //llamada al metodo de numberdisplay
     }
     
@@ -43,7 +43,7 @@ public class clockDisplay
        minutes = new NumberDisplay(60);
        day = new NumberDisplay(30);
        month = new NumberDisplay(12);
-       year = new NumberDisplay(2015);
+       year = new NumberDisplay(99);
        
        hours.setValue(newHours); //cambio de valores del objeto, invocando el metodo setValue de la clase NumberDisplay 
        minutes.setValue(newMinutes);
