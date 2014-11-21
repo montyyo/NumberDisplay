@@ -32,6 +32,7 @@ public class clockDisplay
         month = new NumberDisplay(13);
         year = new NumberDisplay(99);
         
+        //Inicializamos los parametros de la fecha a 1
        day.setValue(1);
        month.setValue(1);
        year.setValue(1);
@@ -64,10 +65,10 @@ public class clockDisplay
      */
     public void setTime(int setHour, int setMinute )
     {
-       hours.setValue(setHour);
+       hours.setValue(setHour); // cambio de los atributos de hora y minutos
        minutes.setValue(setMinute);
        
-       updateDisplay();    
+       updateDisplay();    //guardamos los cambios
     }
     
     /**
@@ -75,11 +76,11 @@ public class clockDisplay
      */
      public void setDate(int newDay, int newMonth, int newYear)
     {
-       
+       // cambio de los atributos de fecha
        day.setValue(newDay);
        month.setValue(newMonth);
        year.setValue(newYear);
-       updateDisplay();    
+       updateDisplay();    //guardamos los cambios
     }
     
     /**
@@ -100,11 +101,11 @@ public class clockDisplay
      day.incremet(); //aumento de 1
      if(day.getValue() == 0) {
         month.incremet(); //si es día 1 aumentamos el mes en 1 
-        day.incremet(); // al pasar de mes el dia es 1
+        day.incremet(); // al pasar de mes el dia es 1 no 0
        if( month.getValue() == 0){
              
              year.incremet(); //aumentamos el año
-             month.incremet(); // al pasar de año el mes es 1
+             month.incremet(); // al pasar de año el mes es 1 no 0
        } 
      }
      
@@ -121,7 +122,7 @@ public class clockDisplay
        
         minutes.incremet();//incrementamos los minutos y su al cambiar llega al limite y pasa a 0 sumamos una hora.
         if(minutes.getValue() == 0) { 
-            hours.incremet();
+            hours.incremet(); 
            if ( hours.getValue() == 0){
                day.incremet();
                if(day.getValue() == 0) {
@@ -145,17 +146,18 @@ public class clockDisplay
      */
     private void updateDisplay() //evitamos el uso redundante de codigo-- podemos sustituir saveHour por 
     {
-        String saveDate = " " + day.getDisplayValueTwo()+ "/" + month.getDisplayValueTwo() + "/" + year.getDisplayValueTwo();
+      // variable local para excribir la fecha
+      String saveDate = " " + day.getDisplayValueTwo()+ "/" + month.getDisplayValueTwo() + "/" + year.getDisplayValueTwo();
        if(hours.getValue() < 12)
        {
-       if (hours.getValue() == 0)
-       {
-           saveHour  = "12"+ ":" + minutes.getDisplayValueTwo() + " am" + saveDate; 
-       }
-        else
-       {
+          if (hours.getValue() == 0)
+          {
+               saveHour  = "12"+ ":" + minutes.getDisplayValueTwo() + " am" + saveDate; 
+          }
+          else
+          {
             saveHour  = hours.getDisplayValueTwo() + ":" + minutes.getDisplayValueTwo() + " am"+ saveDate; 
-       }
+          }
        }
        else
        {
@@ -173,13 +175,8 @@ public class clockDisplay
             {
                 saveHour  = (hours.getValue()-12) + ":" + minutes.getDisplayValueTwo() + " pm"+ saveDate; 
             }
-        }
+         }
+       }
+   }                                    
 }
-        
-        
-             
-         
-        
 
-    }
- }
