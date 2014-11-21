@@ -103,7 +103,7 @@ public class clockDisplay
         day.incremet(); // al pasar de mes el dia es 1
        if( month.getValue() == 0){
              
-             year.incremet(); 
+             year.incremet(); //aumentamos el año
              month.incremet(); // al pasar de año el mes es 1
        } 
      }
@@ -122,11 +122,19 @@ public class clockDisplay
         minutes.incremet();//incrementamos los minutos y su al cambiar llega al limite y pasa a 0 sumamos una hora.
         if(minutes.getValue() == 0) { 
             hours.incremet();
-        }
-       
-        
-        
-
+           if ( hours.getValue() == 0){
+               day.incremet();
+               if(day.getValue() == 0) {
+                     month.incremet(); //si es día 1 aumentamos el mes en 1 
+                     day.incremet(); // al pasar de mes el dia es 1
+                    if( month.getValue() == 0){
+                      year.incremet(); //aumentamos el año
+                      month.incremet(); // al pasar de año el mes es 1
+                    } 
+               }  
+           }
+        } 
+                
        updateDisplay();
        //podemos llamar a updateDisplay();
     }
