@@ -28,10 +28,15 @@ public class clockDisplay
     {
         hours = new NumberDisplay(24);//creacion en memoria de objetos con limite 24h
         minutes = new NumberDisplay(60);//creacion en memoria de objeto con limite 60m
-        day = new NumberDisplay(30);
-        month = new NumberDisplay(12);
+        day = new NumberDisplay(31);
+        month = new NumberDisplay(13);
         year = new NumberDisplay(99);
-        updateDisplay(); //llamada al metodo de numberdisplay
+        
+       day.setValue(1);
+       month.setValue(1);
+       year.setValue(1);
+        
+       updateDisplay(); //llamada al metodo de numberdisplay
     }
     
     /**
@@ -41,8 +46,8 @@ public class clockDisplay
     {
        hours = new NumberDisplay(24);//creacion en memoria de objetos
        minutes = new NumberDisplay(60);
-       day = new NumberDisplay(30);
-       month = new NumberDisplay(12);
+       day = new NumberDisplay(31);
+       month = new NumberDisplay(13);
        year = new NumberDisplay(99);
        
        hours.setValue(newHours); //cambio de valores del objeto, invocando el metodo setValue de la clase NumberDisplay 
@@ -87,6 +92,25 @@ public class clockDisplay
        
    }
     
+   /**
+    * method dateTrick plus a day
+    */
+   public void dateTrick()
+   {
+     day.incremet(); //aumento de 1
+     if(day.getValue() == 0) {
+        month.incremet(); //si es día 1 aumentamos el mes en 1 
+        day.incremet(); // al pasar de mes el dia es 1
+       if( month.getValue() == 0){
+             
+             year.incremet(); 
+             month.incremet(); // al pasar de año el mes es 1
+       } 
+     }
+     
+     updateDisplay();
+   }
+    
     
     /**
      * method timeTick plus a minute
@@ -98,8 +122,9 @@ public class clockDisplay
         minutes.incremet();//incrementamos los minutos y su al cambiar llega al limite y pasa a 0 sumamos una hora.
         if(minutes.getValue() == 0) { 
             hours.incremet();
-            
         }
+       
+        
         
 
        updateDisplay();
